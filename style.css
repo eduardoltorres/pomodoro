@@ -1,0 +1,54 @@
+/* General Styles */
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	font-size: 4rem;
+	margin: 0;
+}
+
+/* Timer Styles */
+
+.wrapper {
+	height: 100vh;
+	display: grid;
+	justify-items: center;
+	align-content: center;
+}
+
+.clock {
+	font-size: 60px;
+}
+
+.session-duration {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	justify-items: center;
+	align-items: center;
+}
+
+.session-duration button {
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+.session-duration button:nth-last-child(1) {
+	grid-column: 1 / -1;
+}
+.session-duration button:focus {
+	outline: none;
+}
