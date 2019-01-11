@@ -1,6 +1,9 @@
 let countdown;
+let amountOfSessions;
 const timerDisplay = document.querySelector('.clock');
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.sessions-quantity');
+const sessionsBoard = document.querySelector('.session-duration');
+const sessionsLeft = document.querySelector('.sessions-left');
 const sessionSeconds = 1500;
 const breakSeconds = 300;
 
@@ -34,4 +37,14 @@ function displayTimeLeft(seconds) {
 function startTimer() {
   const seconds = sessionSeconds;
   timer(seconds);
+
+  amountOfSessions = Number(this.innerText);
+  sessionsBoard.classList.add('active');
+  sessionsLeft.innerHTML = `Sessions left: ${amountOfSessions}`;
+  const resetButton = document.querySelector('#reset');
+  resetButton.addEventListener('click', () => {
+    sessionsBoard.classList.remove('active');
+    clearInterval(countdown);
+    displayTimeLeft(seconds);
+  });
 }

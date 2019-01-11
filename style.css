@@ -33,22 +33,37 @@ h1 {
 	font-size: 60px;
 }
 
+.sessions-left {
+  display: none;
+}
+.session-duration.active ~ .sessions-left {
+  display: block;
+}
+
 .session-duration {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	justify-items: center;
 	align-items: center;
 }
+.session-duration.active {
+  display: none;
+}
 
-.session-duration button {
+button {
 	border: 1px solid black;
 	border-radius: 10px;
 	padding: 5px 10px;
 	cursor: pointer;
 }
-.session-duration button:nth-last-child(1) {
-	grid-column: 1 / -1;
-}
-.session-duration button:focus {
+button:focus {
 	outline: none;
+}
+
+#reset {
+  display: none;
+}
+.session-duration.active ~ #reset {
+  display: block;
+  margin: 10px;
 }
