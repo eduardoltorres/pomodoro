@@ -5,10 +5,10 @@ const buttons = document.querySelectorAll('.sessions-quantity');
 const resetButton = document.querySelector('#reset');
 const sessionsBoard = document.querySelector('.session-duration');
 const sessionsLeft = document.querySelector('.sessions-left');
-const sessionSeconds = 3;
-// const sessionSeconds = 1500;
-const breakSeconds = 2;
-// const breakSeconds = 300;
+// const sessionSeconds = 3;
+const sessionSeconds = 1500;
+// const breakSeconds = 2;
+const breakSeconds = 300;
 
 buttons.forEach(button => button.addEventListener('click', startTimer));
 
