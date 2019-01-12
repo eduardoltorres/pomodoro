@@ -1,14 +1,12 @@
 let countdown;
+let breakSeconds;
 let amountOfSessions;
-const timerDisplay = document.querySelector('.clock');
 const buttons = document.querySelectorAll('.sessions-quantity');
 const resetButton = document.querySelector('#reset');
-const sessionsBoard = document.querySelector('.session-duration');
+const timerDisplay = document.querySelector('.clock');
 const sessionsLeft = document.querySelector('.sessions-left');
-// const sessionSeconds = 3;
+const sessionsBoard = document.querySelector('.session-duration');
 const sessionSeconds = 1500;
-// const breakSeconds = 2;
-const breakSeconds = 300;
 
 buttons.forEach(button => button.addEventListener('click', startTimer));
 
@@ -34,7 +32,7 @@ function timer(seconds) {
         clearInterval(countdown);
       } else {
         clearInterval(countdown);
-        breakTimer(breakSeconds);
+        breakTimer();
         return;
       }
     }
@@ -42,11 +40,19 @@ function timer(seconds) {
   }, 1000);
 }
 
-function breakTimer(seconds) {
-  const now = Date.now();
-  const then = now + seconds * 1000;
-  displayTimeLeft(seconds);
+function breakTimer() {
 
+  if (amountOfSessions === 8 || amountOfSessions === 4) {
+    breakSeconds = 1800;
+  } else {
+    breakSeconds = 300;
+  }
+
+  const now = Date.now();
+  const then = now + breakSeconds * 1000;
+  displayTimeLeft(breakSeconds);
+
+  
   countdown = setInterval(() => {
     const secondsLeft = Math.round((then - Date.now()) / 1000);
     if (secondsLeft === 0) {
