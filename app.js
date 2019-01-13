@@ -2,6 +2,7 @@ let countdown;
 let breakSeconds;
 let amountOfSessions;
 const buttons = document.querySelectorAll('.sessions-quantity');
+const message = document.querySelector('#message');
 const resetButton = document.querySelector('#reset');
 const timerDisplay = document.querySelector('.clock');
 const sessionsLeft = document.querySelector('.sessions-left');
@@ -24,12 +25,14 @@ function timer(seconds) {
   
   amountOfSessions -= 1;
   sessionsLeft.innerHTML = `Sessions left: ${amountOfSessions}`;
+  message.innerHTML = 'Get to work!';
 
   countdown = setInterval(() => {
     const secondsLeft = Math.round((then - Date.now()) / 1000);
     if (secondsLeft === 0) {
       if (amountOfSessions === 0) {
         clearInterval(countdown);
+        message.innerHTML = "You're done. Good job!";
       } else {
         clearInterval(countdown);
         breakTimer();
@@ -41,6 +44,8 @@ function timer(seconds) {
 }
 
 function breakTimer() {
+  message.innerHTML = 'Take a break';
+
   if (amountOfSessions === 4 || amountOfSessions === 8) {
     breakSeconds = 1800;
   } else {
@@ -74,4 +79,5 @@ function reset() {
   clearInterval(countdown);
   sessionsBoard.classList.remove('active');
   displayTimeLeft(sessionSeconds);
+  message.innerHTML = '';
 }

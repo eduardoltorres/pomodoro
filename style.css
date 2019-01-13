@@ -70,3 +70,7 @@ button:focus {
   display: block;
   margin: 10px;
 }
+
+#message {
+  margin: 0;
+}
